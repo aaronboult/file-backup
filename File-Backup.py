@@ -71,10 +71,3 @@ if __name__ == "__main__":
         print("Invalid Parameters. Example Use: \n\n\tpython File-Backup.py 'C:/Users/Me/Desktop/Files' 'E:/Backups' -compress")
 
         os._exit(2)
-
-
-# Tests:
-#
-#   - Backup from location: Folder and file
-#   - Backup to location: Folder and file
-#   - Compression on and off for both above
