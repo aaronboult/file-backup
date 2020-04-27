@@ -35,6 +35,7 @@ class FileBackup:
                 date = datetime.datetime.now()
 
                 shutil.copytree(self.fromDir, os.path.join(self.toDir, "{}-{}-{}".format(date.year, date.month, date.day)))
+                # Copy the entire file structure to the backup directory
             
         else:
 
@@ -58,11 +59,11 @@ class FileBackup:
 
 if __name__ == "__main__":
 
-    if len(sys.argv) == 3:
+    if len(sys.argv) == 3: # If there is no compress argument
 
         FileBackup(sys.argv[1], sys.argv[2], False).Begin()
 
-    elif len(sys.argv) == 4:
+    elif len(sys.argv) == 4: # If a third argument is present, check if it is compress
 
         FileBackup(sys.argv[1], sys.argv[2], sys.argv[3].lower() == "-compress").Begin()
     
