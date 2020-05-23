@@ -65,10 +65,10 @@ if __name__ == "__main__":
 
     elif len(sys.argv) == 4: # If a third argument is present, check if it is compress
 
-        FileBackup(sys.argv[1], sys.argv[2], sys.argv[3].lower() == "-compress").Begin()
+        FileBackup(sys.argv[1], sys.argv[2], sys.argv[3].lower() == "--compress" or sys.argv[3].lower() == "-c").Begin()
     
     else:
 
-        print("Invalid Parameters. Example Use: \n\n\tpython File-Backup.py 'C:/Users/Me/Desktop/Files' 'E:/Backups' -compress")
-
-        os._exit(2)
+        print("Invalid Parameters. Example Use: \n\n\tpython File-Backup.py 'C:/Users/ExampleUser/Pictures' 'G:/Backups' --compress")
+        
+        os._exit(0)
