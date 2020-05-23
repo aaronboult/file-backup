@@ -1,5 +1,5 @@
 # Arguments are as follows: python File-Backup.py FromDir ToDir -Compress
-import sys, os, zipfile, shutil, datetime
+import sys, os, zipfile, shutil, datetime, time
 
 
 class FileBackup:
@@ -34,7 +34,7 @@ class FileBackup:
                 
                 date = datetime.datetime.now()
 
-                shutil.copytree(self.fromDir, os.path.join(self.toDir, "{}-{}-{}".format(date.year, date.month, date.day)))
+                shutil.copytree(self.fromDir, os.path.join(self.toDir, "{}-{}-{}-{}".format(date.day, date.month, date.year, int(round(time.time() * 1000)))))
                 # Copy the entire file structure to the backup directory
             
         else:
@@ -45,7 +45,7 @@ class FileBackup:
                 
         date = datetime.datetime.now()
         
-        zipFile = zipfile.ZipFile(os.path.join(self.toDir, "{}.zip".format("{}-{}-{}".format(date.year, date.month, date.day))), "w", zipfile.ZIP_DEFLATED)
+        zipFile = zipfile.ZipFile(os.path.join(self.toDir, "{}-{}-{}-{}.zip".format(date.day, date.month, date.year, int(round(time.time() * 1000)))), "w", zipfile.ZIP_DEFLATED)
 
         for root, _, files in os.walk(self.fromDir):
 
